@@ -33,7 +33,15 @@ document.querySelectorAll(".lang-switcher button").forEach(btn => {
    STATIKUS SZÖVEGEK BETÖLTÉSE (lang.json)
 --------------------------------------------------- */
 function loadStaticText() {
-  fetch("../lang.json")
+  // Hol fut a main.js?
+  const path = window.location.pathname;
+
+  // Ha aloldal (service/...), akkor ../lang.json
+  const langPath = path.includes("/service/")
+    ? "../lang.json"
+    : "lang.json";
+
+  fetch(langPath)
     .then(res => res.json())
     .then(data => {
       document.querySelectorAll("[data-key]").forEach(el => {
@@ -43,7 +51,6 @@ function loadStaticText() {
         }
       });
 
-      // Placeholder-ek kezelése
       document.querySelectorAll("[data-key-placeholder]").forEach(el => {
         const key = el.dataset.keyPlaceholder;
         if (data[key] && data[key][currentLang]) {
@@ -52,6 +59,7 @@ function loadStaticText() {
       });
     });
 }
+
 
 
 /* ---------------------------------------------------
