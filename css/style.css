@@ -208,10 +208,10 @@ img {
 
 /* Tablet/Desktop nézet - szlogen és gomb jobbra */
 @media (min-width: 768px) {
-  .hero {
-    min-height: 700px;
-    background-position: center;  /* Desktop: középre igazítva */
+  .slogan-box {
+    transform: translate(40px, -30px);
   }
+}
 
   .hero-content {
     align-items: flex-end;       /* Tartalom jobbra igazítva */
@@ -231,12 +231,13 @@ img {
   }
 
   /* Gomb középen (a jobb oldali területen belül) */
-  .hero-main-btn {
-    font-size: 1.3rem;
-    padding: 1.3rem 3.5rem;
-    align-self: center;          /* Gomb középre a konténeren belül */
-  }
+.hero-main-btn {
+  position: absolute;
+  bottom: 25%;
+  right: 50%;
+  transform: translateX(50%);
 }
+
 
 /* Nagy képernyő */
 @media (min-width: 1200px) {
