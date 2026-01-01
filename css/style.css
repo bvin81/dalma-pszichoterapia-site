@@ -134,7 +134,7 @@ img {
   min-height: 600px;
   background-image: url('../images/profile.jpg');
   background-size: cover;
-  background-position: center;
+  background-position: left center;  /* Mobil: bal oldal fix */
   background-repeat: no-repeat;
   display: flex;
   align-items: center;
@@ -210,6 +210,7 @@ img {
 @media (min-width: 768px) {
   .hero {
     min-height: 700px;
+    background-position: center;  /* Desktop: középre igazítva */
   }
 
   .hero-content {
@@ -280,12 +281,13 @@ img {
 }
 
 .btn-secondary {
-  border: 1px solid var(--accent-main);
-  color: var(--accent-main);
+  background: var(--accent-main);  /* Zöld háttér */
+  color: white;                     /* Fehér szöveg */
+  border: none;
 }
 
 .btn-secondary:hover {
-  background: rgba(129, 154, 136, 0.08);
+  background: var(--accent-soft);   /* Világosabb zöld hover-re */
 }
 
 /* ---------------------------------------------------
