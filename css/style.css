@@ -165,18 +165,17 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;        /* Gomb lentebb */
+  justify-content: center;
   min-height: 100%;
-  gap: 2rem;
+  gap: 3rem;                         /* Távolság szlogen és gomb között */
 }
 
-/* Fő gomb - középen, lent */
+/* Fő gomb - középen, szlogen alatt */
 .hero-main-btn {
   font-size: 1.2rem;
   padding: 1.2rem 3rem;
   box-shadow: 0 8px 25px rgba(129, 154, 136, 0.3);
   transition: all 0.3s ease;
-  margin-bottom: 3rem;               /* Távolság az aljától */
 }
 
 .hero-main-btn:hover {
@@ -193,10 +192,7 @@ img {
   box-shadow: none;                  /* Nincs árnyék */
   border: none;
   max-width: 600px;
-  
-  /* Mobil: középen, fent */
-  margin-bottom: auto;
-  margin-top: 2rem;
+  width: 100%;
 }
 
 .slogan-box p {
@@ -210,7 +206,7 @@ img {
   text-align: center;
 }
 
-/* Tablet/Desktop nézet - szlogen jobbra pozicionálva */
+/* Tablet/Desktop nézet - szlogen és gomb jobbra */
 @media (min-width: 768px) {
   .hero {
     min-height: 700px;
@@ -218,30 +214,27 @@ img {
   }
 
   .hero-content {
-    position: relative;
-    padding: 3rem 0;
+    align-items: flex-end;       /* Tartalom jobbra igazítva */
+    padding-right: 8%;           /* Távolság a jobb széltől */
+    gap: 2rem;                   /* Kisebb távolság szlogen és gomb között */
   }
 
-  /* Gomb középen, lent */
-  .hero-main-btn {
-    font-size: 1.3rem;
-    padding: 1.3rem 3.5rem;
-    margin-bottom: 4rem;
-  }
-
-  /* Szlogen jobb oldal, fent */
+  /* Szlogen jobbra igazítva */
   .slogan-box {
-    position: absolute;
-    top: 3rem;
-    right: 5%;
     max-width: 500px;
-    margin: 0;
     padding: 2rem;
   }
 
   .slogan-box p {
     font-size: 2rem;
-    text-align: left;
+    text-align: right;           /* Szöveg jobbra igazítva */
+  }
+
+  /* Gomb középen (a jobb oldali területen belül) */
+  .hero-main-btn {
+    font-size: 1.3rem;
+    padding: 1.3rem 3.5rem;
+    align-self: center;          /* Gomb középre a konténeren belül */
   }
 }
 
@@ -251,9 +244,11 @@ img {
     min-height: 750px;
   }
 
+  .hero-content {
+    padding-right: 10%;          /* Több távolság nagy képernyőn */
+  }
+
   .slogan-box {
-    top: 4rem;
-    right: 8%;
     max-width: 550px;
     padding: 2.5rem 3rem;
   }
@@ -263,7 +258,8 @@ img {
   }
 
   .hero-main-btn {
-    margin-bottom: 5rem;
+    font-size: 1.4rem;
+    padding: 1.4rem 4rem;
   }
 }
 
