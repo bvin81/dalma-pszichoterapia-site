@@ -111,6 +111,7 @@ function getBasePath() {
 
 /* ---------------------------------------------------
    STATIKUS SZÖVEGEK BETÖLTÉSE (lang.json) - CACHE-ELVE
+   🔧 JAVÍTVA: js/lang.json útvonal
 --------------------------------------------------- */
 let cachedTranslations = null;
 
@@ -121,7 +122,7 @@ function loadStaticText() {
   }
   
   const basePath = getBasePath();
-  const langPath = basePath + "lang.json";
+  const langPath = basePath + "js/lang.json";  // ← JAVÍTVA: js/ mappa hozzáadva
   
   console.log("🔍 Betöltés:", langPath); // DEBUG
 
