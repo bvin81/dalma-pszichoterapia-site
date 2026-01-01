@@ -125,55 +125,135 @@ img {
 
 
 /* ---------------------------------------------------
-   HERO – új 3 oszlopos elrendezés
+   HERO – Teljes szélességű háttérkép
+   Gomb középen, szlogen jobbra
 --------------------------------------------------- */
-.hero-custom {
-  display: grid;
-  gap: 2rem;
-  padding: 3rem 0;
-  align-items: center;
-}
-
-.hero-left,
-.hero-center,
-.hero-right {
-  text-align: center;
-}
-
-.hero-profile {
+.hero {
+  position: relative;
   width: 100%;
-  max-width: 260px;
-  border-radius: 16px;
-  box-shadow: var(--shadow-soft);
+  min-height: 600px;
+  background-image: url('../images/profile.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
+/* Sötétítő réteg a kép fölött */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(34, 35, 38, 0.4) 0%,
+    rgba(129, 154, 136, 0.3) 100%
+  );
+  z-index: 1;
+}
+
+/* Tartalom konténer */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 4rem 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+  justify-items: center;
+}
+
+/* Fő gomb - középen */
 .hero-main-btn {
   font-size: 1.2rem;
-  padding: 1rem 2rem;
+  padding: 1.2rem 3rem;
+  box-shadow: 0 8px 25px rgba(129, 154, 136, 0.3);
+  transition: all 0.3s ease;
+  grid-column: 1;
+  justify-self: center;
 }
 
+.hero-main-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(129, 154, 136, 0.4);
+}
+
+/* Szlogen doboz - jobbra */
 .slogan-box {
-  background: var(--bg-beige);
-  padding: 1.5rem;
-  border-radius: 16px;
-  border: 1px solid var(--border-subtle);
-  font-size: 1.1rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 2rem 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  max-width: 600px;
+  grid-column: 1;
+  justify-self: center;
+}
+
+.slogan-box p {
+  font-size: 1.4rem;
   line-height: 1.6;
+  color: var(--text-main);
+  margin: 0;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
 }
 
-@media (min-width: 900px) {
-  .hero-custom {
-    grid-template-columns: 1fr auto 1fr;
+/* Tablet/Desktop nézet - két oszlop */
+@media (min-width: 768px) {
+  .hero {
+    min-height: 700px;
   }
 
-  .hero-left {
-    text-align: left;
+  .hero-content {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
   }
 
-  .hero-right {
-    text-align: right;
+  /* Gomb bal oszlop, középre igazítva */
+  .hero-main-btn {
+    grid-column: 1;
+    justify-self: center;
+    font-size: 1.3rem;
+    padding: 1.3rem 3.5rem;
+  }
+
+  /* Szlogen jobb oszlop */
+  .slogan-box {
+    grid-column: 2;
+    justify-self: start;
+    max-width: 500px;
+  }
+
+  .slogan-box p {
+    font-size: 1.6rem;
   }
 }
+
+/* Nagy képernyő */
+@media (min-width: 1200px) {
+  .hero {
+    min-height: 750px;
+  }
+
+  .slogan-box {
+    padding: 2.5rem 3rem;
+    max-width: 550px;
+  }
+
+  .slogan-box p {
+    font-size: 1.8rem;
+  }
+}
+
 
 /* ---------------------------------------------------
    GOMBOK
@@ -191,6 +271,8 @@ img {
 .btn-primary {
   background: var(--accent-main);
   color: white;
+  border: none;
+  cursor: pointer;
 }
 
 .btn-primary:hover {
@@ -404,54 +486,6 @@ img {
 }
 
 /* ---------------------------------------------------
-   BLOG KÁRTYÁK – új elrendezés
---------------------------------------------------- */
-
-.blog-card {
-  display: flex;
-  flex-direction: column;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-card);
-  overflow: hidden;
-  box-shadow: var(--shadow-soft);
-  text-decoration: none;
-  color: inherit;
-  transition: 0.2s ease;
-}
-
-.blog-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.06);
-}
-
-/* Felső 3/4 rész – kép */
-.blog-card-image {
-  height: 220px;
-  overflow: hidden;
-}
-
-.blog-card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Alsó 1/4 rész – szöveg */
-.blog-card-content {
-  padding: 1rem 1.2rem;
-}
-
-.blog-card-content h3 {
-  margin: 0 0 0.5rem;
-  font-family: "Poppins", sans-serif;
-}
-
-.blog-card-content p {
-  margin: 0;
-  color: var(--text-muted);
-}
-/* ---------------------------------------------------
    BLOG BEJEGYZÉS TIPOGRÁFIA
 --------------------------------------------------- */
 
@@ -533,6 +567,3 @@ img {
   text-align: justify;
   text-justify: inter-word;
 }
-
-
-
