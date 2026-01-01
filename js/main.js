@@ -111,7 +111,7 @@ function getBasePath() {
 
 /* ---------------------------------------------------
    STATIKUS SZÖVEGEK BETÖLTÉSE (lang.json) - CACHE-ELVE
-   🔧 JAVÍTVA: js/lang.json útvonal
+   🔧 JAVÍTVA: lang.json a gyökérben van
 --------------------------------------------------- */
 let cachedTranslations = null;
 
@@ -122,7 +122,7 @@ function loadStaticText() {
   }
   
   const basePath = getBasePath();
-  const langPath = basePath + "js/lang.json";  // ← JAVÍTVA: js/ mappa hozzáadva
+  const langPath = basePath + "lang.json";  // ← JAVÍTVA: lang.json a gyökérben
   
   console.log("🔍 Betöltés:", langPath); // DEBUG
 
@@ -192,10 +192,13 @@ function loadBlogList() {
         // GitHub Pages fix: blog-post.html linkhez is base path kell
         const postLink = basePath + `blog-post.html?id=${post.id}&lang=${currentLang}`;
         
+        // JAVÍTVA: képek útvonala - ha / jellel kezdődik, ne adjuk hozzá a basePath-t
+        const imageSrc = post.image.startsWith('/') ? post.image : basePath + post.image;
+        
         container.innerHTML += `
           <a href="${postLink}" class="blog-card">
             <div class="blog-card-image">
-              <img src="${basePath}${post.image}" alt="${title}" onerror="this.src='${basePath}images/placeholder.jpg'">
+              <img src="${imageSrc}" alt="${title}" onerror="this.src='${basePath}images/placeholder.jpg'">
             </div>
             <div class="blog-card-content">
               <h3>${title}</h3>
@@ -258,7 +261,9 @@ function loadBlogPost() {
         : 'Untitled';
       postTitle.innerHTML = title;
 
-      postImage.src = basePath + post.image;
+      // JAVÍTVA: képek útvonala
+      const imageSrc = post.image.startsWith('/') ? post.image : basePath + post.image;
+      postImage.src = imageSrc;
       postImage.alt = title;
       postImage.onerror = function() {
         this.src = basePath + 'images/placeholder.jpg';
