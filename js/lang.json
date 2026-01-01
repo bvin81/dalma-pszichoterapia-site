@@ -366,4 +366,40 @@
     "ro": "180 lei/ședință",
     "en": "180 lei/session"
   }
+
+  "service_psych_desc": {
+  "hu": "Rövid folyamat aktuális élethelyzeti nehézségekhez, döntéshelyzetekhez.",
+  "ro": "Proces scurt pentru dificultăți actuale și situații decizionale.",
+  "en": "Short-term process for current life challenges and decision-making."
+},
+
+"service_individual_desc": {
+  "hu": "Rendszerszemléletű terápia egyéni nehézségek feldolgozására.",
+  "ro": "Terapie sistemică pentru procesarea dificultăților individuale.",
+  "en": "Systemic therapy for processing individual difficulties."
+},
+
+"service_couples_desc": {
+  "hu": "Rendszerszemléletű támogatás párok és családok számára.",
+  "ro": "Sprijin sistemic pentru cupluri și familii.",
+  "en": "Systemic support for couples and families."
+},
+
+"service_assess_adults_desc": {
+  "hu": "Részletes felmérés a jelenlegi nehézségek tisztázására.",
+  "ro": "Evaluare detaliată pentru clarificarea dificultăților actuale.",
+  "en": "Detailed assessment to clarify current difficulties."
+},
+
+"service_group_desc": {
+  "hu": "Támogató közösség önismeret fejlesztésére és kapcsolati minták feltárására.",
+  "ro": "Comunitate de sprijin pentru dezvoltarea autocunoașterii și explorarea tiparelor relaționale.",
+  "en": "Supportive community for self-awareness and exploring relational patterns."
+},
+
+"service_career_desc": {
+  "hu": "Támogatás szakmai irányválasztásban és karriertervezésben.",
+  "ro": "Sprijin în alegerea direcției profesionale și planificarea carierei.",
+  "en": "Support in professional direction and career planning."
+}
 }
