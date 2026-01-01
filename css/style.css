@@ -128,13 +128,16 @@ img {
    HERO – Teljes szélességű háttérkép
    Gomb középen, szlogen jobbra
 --------------------------------------------------- */
+/* ---------------------------------------------------
+   HERO – Módosítva a rajzolt instrukciók alapján
+--------------------------------------------------- */
 .hero {
   position: relative;
   width: 100%;
-  min-height: 600px;
+  min-height: 700px; /* Megemelt magasság a jobb elrendezéshez */
   background-image: url('../images/profile.jpg');
   background-size: cover;
-  background-position: left center;  /* Mobil: bal oldal fix */
+  background-position: center;
   background-repeat: no-repeat;
   display: flex;
   align-items: center;
@@ -142,125 +145,49 @@ img {
   overflow: hidden;
 }
 
-/* Sötétítő réteg a kép fölött */
-.hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    135deg,
-    rgba(34, 35, 38, 0.4) 0%,
-    rgba(129, 154, 136, 0.3) 100%
-  );
-  z-index: 1;
-}
-
-/* Tartalom konténer */
 .hero-content {
   position: relative;
   z-index: 2;
-  padding: 4rem 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100%;
-  gap: 3rem;                         /* Távolság szlogen és gomb között */
-}
-
-/* Fő gomb - középen, szlogen alatt */
-.hero-main-btn {
-  font-size: 1.2rem;
-  padding: 1.2rem 3rem;
-  box-shadow: 0 8px 25px rgba(129, 154, 136, 0.3);
-  transition: all 0.3s ease;
-}
-
-.hero-main-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 35px rgba(129, 154, 136, 0.4);
-}
-
-/* Szlogen doboz - átlátszó háttér, fehér szöveg */
-.slogan-box {
-  background: transparent;           /* Nincs fehér háttér */
-  backdrop-filter: none;             /* Nincs blur */
-  padding: 2rem 2.5rem;
-  border-radius: 20px;
-  box-shadow: none;                  /* Nincs árnyék */
-  border: none;
-  max-width: 600px;
   width: 100%;
+  display: flex;
+  flex-direction: column-reverse; /* Szlogen felül, gomb alul */
+  align-items: center;
+  gap: 2rem;
 }
 
-.slogan-box p {
-  font-size: 1.8rem;                 /* Nagyobb szöveg */
-  line-height: 1.6;
-  color: white;                      /* Fehér szöveg */
-  margin: 0;
-  font-weight: 600;                  /* Vastagabb betű */
-  font-family: "Poppins", sans-serif;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Árnyék az olvashatóságért */
-  text-align: center;
-}
-
-/* Tablet/Desktop nézet - szlogen és gomb jobbra */
+/* Tablet/Desktop nézet - A rajzolt kék és piros jelek szerint */
 @media (min-width: 768px) {
-  .slogan-box {
-    transform: translate(40px, -30px);
-  }
-}
-
-  .hero-content {
-    align-items: flex-end;       /* Tartalom jobbra igazítva */
-    padding-right: 8%;           /* Távolság a jobb széltől */
-    gap: 2rem;                   /* Kisebb távolság szlogen és gomb között */
-  }
-
-  /* Szlogen jobbra igazítva */
-  .slogan-box {
-    max-width: 500px;
-    padding: 2rem;
-  }
-
-  .slogan-box p {
-    font-size: 2rem;
-    text-align: right;           /* Szöveg jobbra igazítva */
-  }
-
-  /* Gomb középen (a jobb oldali területen belül) */
-.hero-main-btn {
-  position: absolute;
-  bottom: 25%;
-  right: 50%;
-  transform: translateX(50%);
-}
-
-
-/* Nagy képernyő */
-@media (min-width: 1200px) {
   .hero {
-    min-height: 750px;
+    min-height: 800px; /* Elég helyet hagyunk a vertikális eltolásnak */
   }
 
   .hero-content {
-    padding-right: 10%;          /* Több távolság nagy képernyőn */
+    align-items: flex-end;       /* Alapesetben mindent jobbra toljuk */
+    padding-right: 5%;           /* Távolság a jobb széltől */
+    padding-top: 4rem;           /* A szlogen feljebb kerül (KÉK NYÍL) */
+    justify-content: flex-start;
+    gap: 12rem;                  /* Nagy távolság a szöveg és gomb között */
   }
 
+  /* Szlogen - Felül és jobbra (KÉK NYÍL) */
   .slogan-box {
     max-width: 550px;
-    padding: 2.5rem 3rem;
+    text-align: right;
+    margin-top: 0;
   }
 
   .slogan-box p {
     font-size: 2.2rem;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
   }
 
+  /* Fő gomb - Középre igazítva és lejjebb tolva (PIROS JELÖLÉS) */
   .hero-main-btn {
-    font-size: 1.4rem;
-    padding: 1.4rem 4rem;
+    align-self: center;          /* Kilép a jobbra igazításból, középre ugrik */
+    margin-right: 5%;            /* Kompenzáljuk a parent paddinget a tökéletes középponthoz */
+    font-size: 1.3rem;
+    padding: 1.3rem 3.5rem;
+    margin-bottom: 2rem;         /* Pontosan a pirossal satírozott magasságba */
   }
 }
 
